@@ -4,20 +4,15 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow
     , Paper, Typography, Toolbar
     , AppBar, Tabs, Tab, Box
-    , Dialog, ListItemText, ListItem, List, Divider
-    , IconButton, Slide
+    , Dialog, IconButton, Slide
 } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 
 import axiosapi from "./utils/axiosapi"
 
-import cadata from './data/cadata.json'
-const customers = cadata.customers
-
-// customers.filter(c=>c.account_manager_id)
-// const accounts = cadata.accounts
-// console.log('Customers: ', JSON.stringify(customers))
-// console.log('Accounts: ', JSON.stringify(accounts))
+// import cadata from './data/cadata.json'
+// const customerData = cadata.customers
+// const accountData = cadata.accounts
 
 
 export default function App() {
@@ -28,12 +23,6 @@ export default function App() {
         if ( customerData.length === 0 ) {
             axiosapi.get(
                 '/customers'
-                // , {
-                //     params: {
-                //         results: 1,
-                //         inc: 'name,email,picture'
-                //     }
-                // }
             )
             .then( customers => {
                 setCustomerData(customers.data)
@@ -46,12 +35,6 @@ export default function App() {
         if ( accountData.length === 0 ) {
             axiosapi.get(
                 '/accounts'
-                // , {
-                //     params: {
-                //         results: 1,
-                //         inc: 'name,email,picture'
-                //     }
-                // }
             )
             .then( accounts => {
                 setAccountData(accounts.data)
